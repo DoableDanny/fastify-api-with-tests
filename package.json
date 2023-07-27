@@ -1,0 +1,34 @@
+{
+  "name": "fastify-testing",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "@fastify/jwt": "^5.0.0",
+    "@fastify/swagger": "^8.8.0",
+    "@fastify/swagger-ui": "^1.9.3",
+    "@prisma/client": "^5.0.0",
+    "dotenv-cli": "^7.2.1",
+    "fastify": "^4.20.0",
+    "fastify-zod": "^1.3.2",
+    "tap": "^16.3.7",
+    "ts-mock-imports": "^1.3.8",
+    "zod": "^3.21.4",
+    "zod-to-json-schema": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/fastify-jwt": "^0.8.1",
+    "@types/node": "^20.4.4",
+    "@types/tap": "^15.0.8",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.6"
+  },
+  "scripts": {
+    "dev": "tsnd --respawn --transpile-only --exit-child src/app.ts",
+    "test": "NODE_ENV=test tap --node-arg=--require=ts-node/register",
+    "migrate": "npx prisma migrate dev --name init",
+    "migrate-test": "dotenv -e .env.test npx prisma migrate dev --name init"
+  }
+}
